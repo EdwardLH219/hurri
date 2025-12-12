@@ -58,8 +58,8 @@ export function WandTransition() {
       <div 
         className="relative overflow-hidden rounded-2xl inline-block"
         style={{
-          WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%), linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)",
-          maskImage: "linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%), linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)",
+          WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%), linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)",
+          maskImage: "linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%), linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)",
           WebkitMaskComposite: "source-in",
           maskComposite: "intersect",
         }}
@@ -108,6 +108,8 @@ export function WandTransition() {
             top: wandY,
             transform: "translateY(-50%)",
             overflow: "hidden",
+            WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)",
+            maskImage: "linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)",
           }}
         >
             {/* Soft gradient glow */}
