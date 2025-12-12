@@ -86,7 +86,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ type: "spring", duration: 0.5 }}
-              className="relative w-full max-w-lg bg-white rounded-3xl shadow-2xl overflow-hidden"
+              className="relative w-full max-w-lg bg-white rounded-3xl shadow-2xl overflow-hidden max-h-[85vh] md:max-h-[90vh] flex flex-col"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Decorative gradient background */}
@@ -123,13 +123,13 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                 {/* Close button */}
                 <button
                   onClick={onClose}
-                  className="absolute top-6 right-6 p-2 rounded-full hover:bg-purple-100 transition-colors"
+                  className="absolute top-4 right-4 p-2 rounded-full hover:bg-purple-100 transition-colors z-50 bg-white shadow-md"
                 >
                   <X className="w-5 h-5 text-gray-500" />
                 </button>
 
                 {/* Header */}
-                <div className="text-center mb-8">
+                <div className="text-center mb-6 md:mb-8 pt-2">
                   <motion.div
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
@@ -138,16 +138,16 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                   >
                     <Sparkles className="w-8 h-8 text-white" />
                   </motion.div>
-                  <h2 className="text-3xl font-bold mb-2">
+                  <h2 className="text-2xl md:text-3xl font-bold mb-2">
                     Get Your <span className="text-gradient">Free Preview</span>
                   </h2>
-                  <p className="text-muted-foreground">
+                  <p className="text-sm md:text-base text-muted-foreground">
                     Tell us about your website and we&apos;ll send you a stunning preview in 24 hours!
                   </p>
                 </div>
 
                 {/* Form */}
-                <form onSubmit={handleSubmit} className="space-y-5">
+                <form onSubmit={handleSubmit} className="space-y-4 md:space-y-5">
                   {/* Name field */}
                   <div className="space-y-2">
                     <label htmlFor="name" className="text-sm font-medium text-gray-700">
@@ -209,7 +209,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                       name="message"
                       value={formData.message}
                       onChange={handleChange}
-                      rows={4}
+                      rows={3}
                       className="w-full px-4 py-3 rounded-xl border border-purple-200 focus:border-purple-400 focus:ring-4 focus:ring-purple-100 outline-none transition-all bg-white/80 backdrop-blur-sm resize-none"
                       placeholder="Tell us about your business or any specific requirements..."
                     />
@@ -258,7 +258,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                 </form>
 
                 {/* Footer note */}
-                <p className="text-center text-xs text-muted-foreground mt-6">
+                <p className="text-center text-xs text-muted-foreground mt-4 md:mt-6">
                   No credit card required • Free preview in 24 hours • No obligations
                 </p>
               </div>
