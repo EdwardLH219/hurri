@@ -5,6 +5,15 @@ export async function POST(request: NextRequest) {
   try {
     const { name, email, website, message } = await request.json();
 
+    // Validate environment variables
+    if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASSWORD) {
+      console.error('Missing environment variables');
+      return NextResponse.json(
+        { success: false, message: 'Email service not configured. Please contact support.' },
+        { status: 500 }
+      );
+    }
+
     // Create transporter using Gmail
     const transporter = nodemailer.createTransport({
       service: 'gmail',
@@ -65,8 +74,9 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ success: true, message: 'Email sent successfully' });
   } catch (error) {
     console.error('Error sending email:', error);
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
     return NextResponse.json(
-      { success: false, message: 'Failed to send email' },
+      { success: false, message: 'Failed to send email', error: errorMessage },
       { status: 500 }
     );
   }
