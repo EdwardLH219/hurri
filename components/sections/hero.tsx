@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Smartphone } from "lucide-react";
-import { ScrollTransition } from "@/components/ui/scroll-transition";
+import { WandTransition } from "@/components/ui/wand-transition";
 
 export function Hero() {
   return (
@@ -86,7 +86,7 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="mt-16 w-full max-w-5xl mx-auto"
           >
-            <ScrollTransition />
+            <WandTransition />
           </motion.div>
         </div>
       </div>
