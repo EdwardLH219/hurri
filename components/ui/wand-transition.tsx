@@ -54,12 +54,14 @@ export function WandTransition() {
 
   return (
     <div className="relative w-full max-w-xl mx-auto flex justify-center">
-      {/* Main container - exact size of images with stronger fade edges */}
+      {/* Main container - exact size of images with fade edges on all sides */}
       <div 
         className="relative overflow-hidden rounded-2xl inline-block"
         style={{
-          WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)",
-          maskImage: "linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)",
+          WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%), linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)",
+          maskImage: "linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%), linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)",
+          WebkitMaskComposite: "source-in",
+          maskComposite: "intersect",
         }}
       >
         {/* Old Website - Sets the natural size */}
