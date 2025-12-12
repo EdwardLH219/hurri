@@ -70,11 +70,14 @@ export function WandTransition() {
             opacity: oldImageOpacity,
           }}
         >
-          <img
+          <Image
             src="/old.svg"
             alt="Old Website"
+            width={800}
+            height={600}
             className="w-full h-auto rounded-2xl block"
             style={{ mixBlendMode: 'multiply', display: 'block' }}
+            priority
           />
         </motion.div>
 
@@ -86,9 +89,11 @@ export function WandTransition() {
             maskImage: maskGradient,
           }}
         >
-          <img
+          <Image
             src="/new.svg"
             alt="New Website"
+            width={800}
+            height={600}
             className="w-full h-full rounded-2xl block"
             style={{ mixBlendMode: 'multiply', objectFit: 'cover' }}
           />
