@@ -47,7 +47,7 @@ export function Testimonials() {
           </p>
         </motion.div>
 
-        <div className="grid gap-8 md:grid-cols-3 mx-auto">
+        <div className="grid gap-8 md:grid-cols-3 mx-auto max-w-6xl">
           {testimonials.map((testimonial, index) => (
             <motion.div
               key={testimonial.author}
@@ -55,15 +55,16 @@ export function Testimonials() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="flex justify-center"
             >
-              <Card className="h-full hover:shadow-xl transition-all hover:-translate-y-1 border-0 bg-gradient-purple-soft shadow-md rounded-3xl">
-                <CardHeader className="p-8">
-                  <Quote className="h-10 w-10 text-primary/40 mb-4" />
+              <Card className="h-full hover:shadow-xl transition-all hover:-translate-y-1 border-0 bg-gradient-purple-soft shadow-md rounded-3xl w-full max-w-sm">
+                <CardHeader className="p-8 text-center">
+                  <Quote className="h-10 w-10 text-primary/40 mb-4 mx-auto" />
                   <h3 className="text-xl font-bold mb-2">
                     {testimonial.title}
                   </h3>
                 </CardHeader>
-                <CardContent className="px-8 pb-8 space-y-6">
+                <CardContent className="px-8 pb-8 space-y-6 text-center">
                   <p className="text-muted-foreground text-base leading-relaxed">
                     &ldquo;{testimonial.quote}&rdquo;
                   </p>

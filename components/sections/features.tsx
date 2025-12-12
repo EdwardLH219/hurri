@@ -45,7 +45,7 @@ export function Features() {
           </p>
         </motion.div>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mx-auto">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mx-auto max-w-5xl">
           {features.map((feature, index) => {
             const Icon = feature.icon;
             return (
@@ -55,10 +55,11 @@ export function Features() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="flex justify-center"
               >
-                <Card className="h-full hover:shadow-xl transition-all hover:-translate-y-1 border-0 bg-white shadow-md rounded-3xl">
-                  <CardHeader className="p-8">
-                    <div className="w-14 h-14 rounded-2xl bg-gradient-purple flex items-center justify-center mb-6 shadow-lg">
+                <Card className="h-full hover:shadow-xl transition-all hover:-translate-y-1 border-0 bg-white shadow-md rounded-3xl w-full max-w-sm">
+                  <CardHeader className="p-8 text-center">
+                    <div className="w-14 h-14 rounded-2xl bg-gradient-purple flex items-center justify-center mb-6 shadow-lg mx-auto">
                       <Icon className="h-7 w-7 text-white" />
                     </div>
                     <CardTitle className="text-xl mb-3">{feature.title}</CardTitle>

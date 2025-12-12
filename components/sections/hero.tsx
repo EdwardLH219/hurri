@@ -1,13 +1,18 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Smartphone } from "lucide-react";
 import { WandTransition } from "@/components/ui/wand-transition";
+import { ContactModal } from "@/components/ui/contact-modal";
 
 export function Hero() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white pt-24">
+    <>
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white pt-24">
       {/* Animated background gradient orbs */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
@@ -50,10 +55,6 @@ export function Hero() {
             transition={{ duration: 0.5 }}
             className="space-y-4"
           >
-            <div className="inline-flex items-center rounded-full bg-gradient-purple-soft px-5 py-2 text-sm font-medium text-primary">
-              <Smartphone className="mr-2 h-4 w-4" />
-              AI-Powered Web Renovation
-            </div>
             <h1 className="text-5xl font-bold tracking-tight sm:text-6xl md:text-7xl lg:text-8xl">
               Get a face lift.
               <br />
@@ -72,11 +73,12 @@ export function Hero() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="flex flex-col sm:flex-row gap-4"
           >
-            <Button size="lg" className="gap-2 bg-gradient-purple hover:opacity-90 text-white border-0 px-8 py-6 text-base rounded-full shadow-lg">
+            <Button 
+              size="lg" 
+              className="gap-2 bg-gradient-purple hover:opacity-90 text-white border-0 px-8 py-6 text-base rounded-full shadow-lg"
+              onClick={() => setIsModalOpen(true)}
+            >
               Get Your Free Preview <ArrowRight className="h-5 w-5" />
-            </Button>
-            <Button size="lg" variant="outline" className="gap-2 px-8 py-6 text-base rounded-full border-2">
-              See How It Works
             </Button>
           </motion.div>
 
@@ -91,6 +93,10 @@ export function Hero() {
         </div>
       </div>
     </section>
+
+    {/* Contact Modal */}
+    <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+    </>
   );
 }
 

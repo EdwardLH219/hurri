@@ -1,12 +1,17 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { ContactModal } from "@/components/ui/contact-modal";
 
 export function CTA() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
-    <section className="py-32 bg-gradient-purple text-white relative overflow-hidden">
+    <>
+      <section className="py-32 bg-gradient-purple text-white relative overflow-hidden">
       {/* Decorative elements */}
       <motion.div
         className="absolute top-20 right-20 w-80 h-80 bg-white/10 rounded-full blur-3xl"
@@ -56,15 +61,9 @@ export function CTA() {
               size="lg" 
               variant="secondary"
               className="gap-2 bg-white text-primary hover:bg-white/90 px-8 py-6 text-base rounded-full shadow-lg border-0"
+              onClick={() => setIsModalOpen(true)}
             >
               Get Your Free Preview <ArrowRight className="h-5 w-5" />
-            </Button>
-            <Button 
-              size="lg" 
-              variant="outline"
-              className="gap-2 border-2 border-white text-white hover:bg-white/10 px-8 py-6 text-base rounded-full"
-            >
-              Learn More
             </Button>
           </div>
 
@@ -74,6 +73,10 @@ export function CTA() {
         </motion.div>
       </div>
     </section>
+
+    {/* Contact Modal */}
+    <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+    </>
   );
 }
 

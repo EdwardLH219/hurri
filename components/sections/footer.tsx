@@ -1,63 +1,59 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
+import { TermsModal } from "@/components/ui/terms-modal";
+import { PrivacyModal } from "@/components/ui/privacy-modal";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
+  const [isTermsOpen, setIsTermsOpen] = useState(false);
+  const [isPrivacyOpen, setIsPrivacyOpen] = useState(false);
 
   return (
-    <footer className="bg-gradient-purple-soft border-t border-purple-100">
-      <div className="container px-4 md:px-6 py-16 mx-auto max-w-7xl">
-        <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-4">
-          <div className="space-y-4">
-            <div className="flex items-center">
-              <Image 
-                src="/logo.png" 
-                alt="Hurri Logo" 
-                width={120} 
-                height={40}
-                className="h-10 w-auto"
-              />
-            </div>
-            <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
-              AI-powered website renovation. Transform your digital presence in minutes.
-            </p>
+    <>
+      <footer className="bg-gradient-purple-soft border-t border-purple-100">
+      <div className="container px-4 md:px-6 py-8 mx-auto max-w-7xl">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+          {/* Left: Logo only */}
+          <div className="flex items-center">
+            <Image 
+              src="/logo.png" 
+              alt="Hurri Logo" 
+              width={140} 
+              height={47}
+              className="h-10 w-auto"
+            />
           </div>
 
-          <div className="space-y-4">
-            <h3 className="font-bold text-foreground">Product</h3>
-            <ul className="space-y-3 text-sm text-muted-foreground">
-              <li><a href="#" className="hover:text-primary transition-colors">How It Works</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Pricing</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Examples</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Get Started</a></li>
-            </ul>
+          {/* Center: Copyright */}
+          <div className="text-sm text-muted-foreground">
+            <p>© {currentYear} Hurri. All rights reserved.</p>
           </div>
 
-          <div className="space-y-4">
-            <h3 className="font-bold text-foreground">Company</h3>
-            <ul className="space-y-3 text-sm text-muted-foreground">
-              <li><a href="#" className="hover:text-primary transition-colors">About</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Blog</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Careers</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Contact</a></li>
-            </ul>
+          {/* Right: Terms and Privacy */}
+          <div className="flex items-center gap-6 text-sm text-muted-foreground">
+            <button 
+              onClick={() => setIsTermsOpen(true)}
+              className="hover:text-primary transition-colors"
+            >
+              Terms
+            </button>
+            <button 
+              onClick={() => setIsPrivacyOpen(true)}
+              className="hover:text-primary transition-colors"
+            >
+              Privacy
+            </button>
           </div>
-
-          <div className="space-y-4">
-            <h3 className="font-bold text-foreground">Legal</h3>
-            <ul className="space-y-3 text-sm text-muted-foreground">
-              <li><a href="#" className="hover:text-primary transition-colors">Privacy</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Terms</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Cookie Policy</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Licenses</a></li>
-            </ul>
-          </div>
-        </div>
-
-        <div className="mt-16 pt-8 border-t border-purple-200 text-center text-sm text-muted-foreground">
-          <p>© {currentYear} Hurri. All rights reserved.</p>
         </div>
       </div>
     </footer>
+
+    {/* Modals */}
+    <TermsModal isOpen={isTermsOpen} onClose={() => setIsTermsOpen(false)} />
+    <PrivacyModal isOpen={isPrivacyOpen} onClose={() => setIsPrivacyOpen(false)} />
+    </>
   );
 }
 

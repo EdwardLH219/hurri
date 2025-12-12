@@ -8,7 +8,6 @@ import Image from "next/image";
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,9 +29,17 @@ export function Navbar() {
       }`}
     >
       <div className="container px-4 md:px-6 mx-auto max-w-7xl">
-        <div className="flex h-16 items-center justify-between">
-          {/* Logo */}
-          <div className="flex items-center">
+        <div className={`flex items-center justify-center transition-all duration-300 ${
+          isScrolled ? "h-16" : "h-20"
+        }`}>
+          {/* Logo - Centered with dynamic size */}
+          <motion.div 
+            className="flex items-center"
+            animate={{
+              scale: isScrolled ? 1 : 1.3,
+            }}
+            transition={{ duration: 0.3 }}
+          >
             <Image 
               src="/logo.png" 
               alt="Hurri Logo" 
@@ -41,73 +48,8 @@ export function Navbar() {
               className="h-10 w-auto"
               priority
             />
-          </div>
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-6">
-            <a
-              href="#features"
-              className="text-sm font-medium hover:text-primary transition-colors"
-            >
-              How It Works
-            </a>
-            <a
-              href="#testimonials"
-              className="text-sm font-medium hover:text-primary transition-colors"
-            >
-              Testimonials
-            </a>
-            <a
-              href="#pricing"
-              className="text-sm font-medium hover:text-primary transition-colors"
-            >
-              Pricing
-            </a>
-            <Button size="sm" className="bg-gradient-purple hover:opacity-90 text-white border-0 rounded-full px-6">Get Free Preview</Button>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            {isMobileMenuOpen ? (
-              <X className="h-6 w-6" />
-            ) : (
-              <Menu className="h-6 w-6" />
-            )}
-          </button>
-        </div>
-
-        {/* Mobile Menu */}
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden py-4 space-y-4"
-          >
-            <a
-              href="#features"
-              className="block text-sm font-medium hover:text-primary transition-colors"
-            >
-              How It Works
-            </a>
-            <a
-              href="#testimonials"
-              className="block text-sm font-medium hover:text-primary transition-colors"
-            >
-              Testimonials
-            </a>
-            <a
-              href="#pricing"
-              className="block text-sm font-medium hover:text-primary transition-colors"
-            >
-              Pricing
-            </a>
-            <Button className="w-full bg-gradient-purple hover:opacity-90 text-white border-0 rounded-full">Get Free Preview</Button>
           </motion.div>
-        )}
+        </div>
       </div>
     </motion.nav>
   );

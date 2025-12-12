@@ -40,21 +40,21 @@ export function Problem() {
           </p>
           <div className="flex flex-wrap justify-center gap-4 text-sm text-muted-foreground pt-4">
             <div className="flex items-center gap-2">
-              <span className="text-red-500">✗</span>
+              <span className="text-purple-500">✗</span>
               <span>Damage credibility & trust</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-red-500">✗</span>
+              <span className="text-purple-500">✗</span>
               <span>Reduce client acquisition</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-red-500">✗</span>
+              <span className="text-purple-500">✗</span>
               <span>Sign of business stagnation</span>
             </div>
           </div>
         </motion.div>
 
-        <div className="grid gap-8 md:grid-cols-3 max-w-4xl mx-auto">
+        <div className="grid gap-8 md:grid-cols-3 max-w-5xl mx-auto">
           {problems.map((problem, index) => {
             const Icon = problem.icon;
             return (
@@ -64,13 +64,13 @@ export function Problem() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="text-center space-y-4"
+                className="text-center space-y-4 flex flex-col items-center"
               >
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-red-50 to-red-100 flex items-center justify-center mx-auto shadow-md">
-                  <Icon className="h-8 w-8 text-red-500" />
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-50 to-pink-50 flex items-center justify-center shadow-md">
+                  <Icon className="h-8 w-8 text-purple-500" />
                 </div>
                 <h3 className="text-xl font-bold">{problem.title}</h3>
-                <p className="text-muted-foreground">{problem.description}</p>
+                <p className="text-muted-foreground max-w-xs">{problem.description}</p>
               </motion.div>
             );
           })}
