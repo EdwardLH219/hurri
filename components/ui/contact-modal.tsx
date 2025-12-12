@@ -118,18 +118,18 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                 }}
               />
 
-              {/* Content */}
-              <div className="relative p-8">
-                {/* Close button */}
+              {/* Content - Scrollable */}
+              <div className="relative overflow-y-auto flex-1 p-6 md:p-8">
+                {/* Close button - sticky */}
                 <button
                   onClick={onClose}
-                  className="absolute top-4 right-4 p-2 rounded-full hover:bg-purple-100 transition-colors z-50 bg-white shadow-md"
+                  className="sticky top-2 right-2 float-right p-2 rounded-full hover:bg-purple-100 transition-colors z-50 bg-white shadow-md"
                 >
                   <X className="w-5 h-5 text-gray-500" />
                 </button>
 
                 {/* Header */}
-                <div className="text-center mb-6 md:mb-8 pt-2">
+                <div className="text-center mb-6 md:mb-8 pt-2 clear-both">
                   <motion.div
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
