@@ -157,41 +157,6 @@ export function WandTransition() {
               </motion.div>
             ))}
 
-            {/* Central wand icon */}
-            <motion.div
-              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
-              animate={{
-                rotate: [0, 5, -5, 0],
-                scale: [1, 1.1, 1],
-              }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            >
-              <div className="relative">
-                {/* Glow rings */}
-                <motion.div
-                  className="absolute inset-0 -m-4"
-                  animate={{
-                    scale: [1, 1.5, 1],
-                    opacity: [0.5, 0, 0.5],
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: "easeOut",
-                  }}
-                >
-                  <div className="w-16 h-16 rounded-full bg-purple-400/30 blur-xl" />
-                </motion.div>
-                
-                {/* Wand icon */}
-                <Wand2 className="w-8 h-8 text-purple-500 drop-shadow-2xl relative z-10" strokeWidth={2.5} />
-              </div>
-            </motion.div>
-
             {/* Magical particles - only render on client */}
             {isClient && particles.map((particle, i) => (
               <motion.div
